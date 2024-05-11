@@ -1,58 +1,111 @@
-export const runtime = "edge";
+import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import {
+  BookmarkSquareIcon,
+  BookOpenIcon,
+  QueueListIcon,
+  RssIcon,
+} from "@heroicons/react/24/solid";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function NotFound() {
+const links = [
+  {
+    name: "Documentation",
+    href: "#",
+    description: "Learn how to integrate our tools with your app.",
+    icon: BookOpenIcon,
+  },
+  {
+    name: "API Reference",
+    href: "#",
+    description: "A complete API reference for our libraries.",
+    icon: QueueListIcon,
+  },
+  {
+    name: "Guides",
+    href: "#",
+    description: "Installation guides that cover popular setups.",
+    icon: BookmarkSquareIcon,
+  },
+  {
+    name: "Blog",
+    href: "#",
+    description: "Read our latest news and articles.",
+    icon: RssIcon,
+  },
+];
+
+const NotFoundPage = () => {
   return (
     <>
-      <title>404: This page could not be found.</title>
-      <div style={styles.error}>
-        <div>
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}`,
-            }}
+      <div className="bg-white">
+        <main className="mx-auto w-full max-w-7xl px-6 pb-16 pt-10 sm:pb-24 lg:px-8">
+          <Image
+            className="mx-auto h-10 w-auto sm:h-12"
+            src="https://tailwindui.com/img/logos/mark.svg?color=neutral&shade=600"
+            alt="Your Company"
+            width={160}
+            height={40}
           />
-          <h1 className="next-error-h1" style={styles.h1}>
-            404
-          </h1>
-          <div style={styles.desc}>
-            <h2 style={styles.h2}>This page could not be found.</h2>
+          <div className="mx-auto mt-20 max-w-2xl text-center sm:mt-24">
+            <p className="text-base font-semibold leading-8 text-neutral-600">
+              404
+            </p>
+            <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              This page does not exist
+            </h1>
+            <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-6 sm:text-lg sm:leading-8">
+              Sorry, we couldn’t find the page you’re looking for.
+            </p>
           </div>
-        </div>
+          <div className="mx-auto mt-16 flow-root max-w-lg sm:mt-20">
+            <h2 className="sr-only">Popular pages</h2>
+            <ul
+              role="list"
+              className="-mt-6 divide-y divide-gray-900/5 border-b border-gray-900/5"
+            >
+              {links.map((link, linkIdx) => (
+                <li key={linkIdx} className="relative flex gap-x-6 py-6">
+                  <div className="flex h-10 w-10 flex-none items-center justify-center rounded-lg shadow-sm ring-1 ring-gray-900/10">
+                    <link.icon
+                      className="h-6 w-6 text-neutral-600"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div className="flex-auto">
+                    <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                      <Link href={link.href}>
+                        <span className="absolute inset-0" aria-hidden="true" />
+                        {link.name}
+                      </Link>
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-gray-600">
+                      {link.description}
+                    </p>
+                  </div>
+                  <div className="flex-none self-center">
+                    <ChevronRightIcon
+                      className="h-5 w-5 text-gray-400"
+                      aria-hidden="true"
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10 flex justify-center">
+              <Link
+                href="#"
+                className="text-sm font-semibold leading-6 text-neutral-600"
+              >
+                <span aria-hidden="true">&larr;</span>
+                Back to home
+              </Link>
+            </div>
+          </div>
+        </main>
       </div>
     </>
   );
-}
+};
 
-const styles = {
-  error: {
-    fontFamily:
-      'system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
-    height: "100vh",
-    textAlign: "center",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  desc: {
-    display: "inline-block",
-  },
-
-  h1: {
-    display: "inline-block",
-    margin: "0 20px 0 0",
-    padding: "0 23px 0 0",
-    fontSize: 24,
-    fontWeight: 500,
-    verticalAlign: "top",
-    lineHeight: "49px",
-  },
-
-  h2: {
-    fontSize: 14,
-    fontWeight: 400,
-    lineHeight: "49px",
-    margin: 0,
-  },
-} as const;
+export default NotFoundPage;
