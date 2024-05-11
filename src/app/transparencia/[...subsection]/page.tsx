@@ -84,7 +84,6 @@ const SubsectionPage = () => {
       </div>
       <ul role="list" className="divide-y divide-gray-100 bg-white">
         {" "}
-        {/* Asegúrate de que el fondo sea blanco */}
         {data ? (
           <>
             {data.folders.map((folder, index) => (
