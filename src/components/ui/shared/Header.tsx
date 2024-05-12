@@ -374,6 +374,12 @@ const Header = () => {
             >
               Contacto
             </Link>
+            <Link
+              href="/contacto"
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
+              Iniciar sesión <span aria-hidden="true">&rarr;</span>
+            </Link>
           </Popover.Group>
         </nav>
         <Dialog

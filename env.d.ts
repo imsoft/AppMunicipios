@@ -2,4 +2,22 @@
 // by running `wrangler types --env-interface CloudflareEnv env.d.ts`
 
 interface CloudflareEnv {
+  DB: D1Database;
 }
+
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      [key: string]: string | undefined;
+      DATABASE: "san-brandon-db";
+      // The KV Namespace binding type used here comes
+      // from `@cloudflare/workers-types`, in order to
+      // use it like so, make sure that you have installed
+      // the package as a dev dependency and you have added
+      // it to your `tsconfig.json` file under
+      // `compilerOptions.types`.            DB: D1Database;
+    }
+  }
+}
+
+export {};
