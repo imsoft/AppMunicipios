@@ -5,7 +5,6 @@ export const runtime = "edge";
 
 export async function GET() {
   const DB = getRequestContext().env.DB;
-  console.log("DB: ", DB);
 
   const result = await DB.prepare("SELECT * FROM experiences").run();
 

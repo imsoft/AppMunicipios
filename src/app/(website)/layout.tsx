@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
+import { Footer, Header } from "@/components/ui/shared";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,14 +10,16 @@ export const metadata: Metadata = {
   description: "Página web de San Brandon",
 };
 
-export default function RootLayout({
+export default function WebSiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={`${inter.className} antialiased`}>{children}</body>
-    </html>
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
   );
 }
