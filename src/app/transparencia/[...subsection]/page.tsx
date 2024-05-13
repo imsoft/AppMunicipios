@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useParams } from "next/navigation";
-import { folderIcon, getFileIcon } from "@/app/utils";
+import { folderIcon, getFileIcon } from "@/utils";
 import { Breadcrumb } from "@/components/ui/transparency";
 
 export const runtime = "edge";

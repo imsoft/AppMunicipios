@@ -86,9 +86,7 @@ pages_build_output_dir = ".vercel/output/static"
 # binding = "MY_KV_NAMESPACE"
 # id = "<PRODUCTION_NAMESPACE_ID>"
 
-# Bind a D1 database. D1 is Cloudflare’s native serverless SQL database.
-# Docs: https://developers.cloudflare.com/pages/functions/bindings/#d1-databases
 [[d1_databases]]
-binding = "DB"
-database_name = "san-brandon-db"
-database_id = "00a7aeb5-432c-4ccf-b2b7-56edd72e7289"
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "san_brandon_db"
+database_id = "685d152e-70c9-4f0d-ab73-566e59edcac2"
